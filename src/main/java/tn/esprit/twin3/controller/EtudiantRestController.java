@@ -1,6 +1,7 @@
 package tn.esprit.twin3.controller;
 
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.twin3.dto.EtudiantDTO;
 import tn.esprit.twin3.entity.Etudiant;
 import tn.esprit.twin3.service.EtudiantInterface;
 
@@ -42,4 +43,8 @@ public class EtudiantRestController {
         etudiantInterface.removeEtudiant(id);
     }
 
+    @GetMapping("/dto/{id}")
+    public EtudiantDTO getEtudiantByIdDTO(@PathVariable("id") long idEtudiant) {
+        return etudiantInterface.getEtudiantByIdDTO(idEtudiant);
+    }
 }

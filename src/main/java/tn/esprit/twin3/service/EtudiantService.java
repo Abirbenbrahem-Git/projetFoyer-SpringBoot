@@ -1,6 +1,7 @@
 package tn.esprit.twin3.service;
 
 import org.springframework.stereotype.Service;
+import tn.esprit.twin3.dto.EtudiantDTO;
 import tn.esprit.twin3.entity.Etudiant;
 import tn.esprit.twin3.repository.EtudiantRepository;
 
@@ -39,4 +40,20 @@ public class EtudiantService implements EtudiantInterface{
     public void removeEtudiant(long idEtudiant) {
         etudiantRepository.deleteById(idEtudiant);
     }
+
+    public EtudiantDTO convertTODTO(Etudiant etudiant) {
+        EtudiantDTO etudiantDTO = new EtudiantDTO();
+        etudiantDTO.setName(etudiant.getNomE());
+        etudiantDTO.setFamilyName(etudiant.getEcole());
+        return etudiantDTO;
+    }
+
+    public EtudiantDTO getEtudiantByIdDTO(long idEtudiant) {
+        Etudiant etudiant = etudiantRepository.findById(idEtudiant)
+                .orElseThrow(() -> new RuntimeException("Etudiant non trouvé avec ID : " + idEtudiant));
+
+        return convertTODTO(etudiant);
+    }
+
+
 }

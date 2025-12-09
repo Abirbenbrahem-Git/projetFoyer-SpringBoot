@@ -1,5 +1,6 @@
 package tn.esprit.twin3.service;
 
+import tn.esprit.twin3.dto.EtudiantDTO;
 import tn.esprit.twin3.entity.Etudiant;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface EtudiantInterface {
     Etudiant updateEtudiant (Etudiant e);
     Etudiant retrieveEtudiant(long idEtudiant);
     void removeEtudiant(long idEtudiant);
-
+    public EtudiantDTO getEtudiantByIdDTO(long idEtudiant);
 }
